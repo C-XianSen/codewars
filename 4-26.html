@@ -17,18 +17,26 @@
         // spinWords( "This is a test") => returns "This is a test" 
         // spinWords( "This is another test" )=> returns "This is rehtona test"
 
-        function spinWords(aS){
-            //TODO Have fun :)
-            var newA = aS.split(" ")
+        // myself
+        // function spinWords(aS){
+        //     //TODO Have fun :)
+        //     var newA = aS.split(" ")
         
-            for(var i = 0; i < newA.length; i++) {
-                if(newA[i].length >= 5) {
-                    var iArr = newA[i].split("");
-                    newA[i] = iArr.reverse().join("")
-                }
-            }
-            return newA.join(" ")
-        }
+        //     for(var i = 0; i < newA.length; i++) {
+        //         if(newA[i].length >= 5) {
+        //             var iArr = newA[i].split("");
+        //             newA[i] = iArr.reverse().join("")
+        //         }
+        //     }
+        //     return newA.join(" ")
+        // }
+
+        // best
+        // function spinWords(words) {
+        //     return words.split(" ").map(function (word) {
+        //         return (word.length > 4) ? word.split("").reverse().join("") : word
+        //     }).join(" ")
+        // }
 
         console.log(spinWords("Welcome"));
         console.log(spinWords("Hey fellow warriors"));
