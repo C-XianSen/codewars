@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // https://www.codewars.com/kata/57cebe1dc6fdc20c57000ac9/train/javascript
+
+        // Description:
+
+        // Simple, given a string of words, return the length of the shortest word(s).
+
+        // String will never be empty and you do not need to account for different data types.
+
+        // myself (first)
+        function findShort(s) {
+            return Math.min.apply(null, s.split(" ").map(e => e.length))
+        }
+
+        // second
+        // function findShort(s) {
+        //     return Math.min(...s.split(" ").map(s => s.length))
+        // }
+
+        // third
+        // function findShort(s) {
+        //     var arr = s.split(" ")
+        //     var smallest = arr[0]
+
+        //     for (let i = 0; i < arr.length; i++) {
+        //         if (arr[i].length < smallest.length) {
+        //             smallest = arr[i]
+        //         }
+        //     }
+        //     return smallest.length
+        // }
+
+        console.log(findShort("bitcoin take over the world maybe who knows perhaps"))
+        console.log(findShort("turns out random test cases are easier than writing out basic ones"))
+    </script>
+</body>
+</html>
