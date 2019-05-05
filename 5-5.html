@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // https://www.codewars.com/kata/513e08acc600c94f01000001/train/javascript
+
+        // Description:
+
+        // The rgb() method is incomplete. Complete the method so that passing in RGB decimal values will result in a hexadecimal representation being returned. The valid decimal values for RGB are 0 - 255. Any (r,g,b) argument values that fall out of that range should be rounded to the closest valid value.
+
+        // The following are examples of expected output values:
+
+        // rgb(255, 255, 255) // returns FFFFFF
+        // rgb(255, 255, 300) // returns FFFFFF
+        // rgb(0,0,0) // returns 000000
+        // rgb(148, 0, 211) // returns 9400D3
+
+        // myself
+        function rgb(r, g, b) {
+            // complete this function  
+            var RGB = [r, g, b]
+
+            RGB.map((e, i) => {
+                e > 255 ? RGB[i] = 255 : RGB[i]
+                e < 0 ? RGB[i] = 0 : RGB[i]
+            })
+            
+            RGB.map((e, i) => {
+                RGB[i] = e.toString(16)
+            })
+
+            for (let i = 0; i < RGB.length; i++) {
+                RGB[i] = RGB[i].length == 1 ? "0" + RGB[i] : RGB[i]
+            }
+
+            var newA = RGB[0] + RGB[1] + RGB[2]
+
+            return newA
+
+        }
+
+        // first
+        function rgb(r, g, b){
+            return toHex(r)+toHex(g)+toHex(b);
+
+            function toHex(d) {
+                if(d < 0 ) {return "00";}
+                if(d > 255 ) {return "FF";}
+                return  ("0"+(Number(d).toString(16))).slice(-2).toUpperCase()
+            }
+        }
+
+        // second
+        function rgb(r, g, b) {
+            return [r, g, b].map(function (x) {
+                return ("0"+Math.max(0, Math.min(255, x)).toString(16)).slice(-2)
+            }).join("").toUpperCase()
+        }
+
+        // other
+        function rgb(r, g, b) {
+            r = Math.max(0, Math.min(255, r))
+            g = Math.max(0, Math.min(255, g))
+            b = Math.max(0, Math.min(255, b))
+
+            let color = (r << 16) + (g << 8) + b
+
+            return ("00000" + color.toString(16).toUpperCase()).slice(-6)
+        }
+
+        console.log(rgb(0, 0, 0));
+        console.log(rgb(0, 0, -20));
+        console.log(rgb(300,255,255));
+        console.log(rgb(173,255,47));
+    </script>
+</body>
+</html>
