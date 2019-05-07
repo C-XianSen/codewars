@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IP Validation</title>
+</head>
+<body>
+    <script>
+
+        // Description:
+
+        // Write an algorithm that will identify valid IPv4 addresses in dot-decimal format. IPs should be considered valid if they consist of four octets, with values between 0 and 255, inclusive.
+
+        // Input to the function is guaranteed to be a single string.
+
+        // https://www.codewars.com/kata/515decfd9dcfc23bb6000006/train/javascript
+
+        // Examples
+
+        // Valid inputs:
+
+        // 1.2.3.4
+        // 123.45.67.89
+        // Invalid inputs:
+
+        // 1.2.3
+        // 1.2.3.4.5
+        // 123.456.78.90
+        // 123.045.067.089
+
+        // myself
+        function isValidIP(str) {
+            var ipArr = str.split(".")
+
+            if (ipArr.length === 4) {
+                if (ipArr.filter(e => /^[0-9]+$/.test(e) == true).length === 4) {
+                    if (ipArr.filter(e => e > -1 && e < 256).length === 4) {
+                        if (ipArr.filter(e => e.split("").length > 1 && e.split("")[0] == 0).length === 0) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    } else {
+                        return false
+                    }
+                } else {
+                    return false
+                }
+            } else {
+                return false
+            }
+        }
+
+        // first
+        // function isValidIP(str) {
+        //     return /^(([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])(\.(?!$)|$)){4}$/.test(str)
+        // }
+
+        // second
+        // function isValidIP(str) {
+        //     return str.split('.').filter(function(v){return v==Number(v).toString() && Number(v)<256}).length==4
+        // }
+
+        // third
+        // const net = require('net');   ?require
+        // const isValidIP = (s) => net.isIP(s);
+
+        // other
+        // function isValidIP(str) {
+        //     var p = str.split('.')
+
+        //     return p.length == 4 && p.every(function(s) {
+        //         return /^\d+$/.test(s) && s >= 0 && s <= 255
+        //     });
+        // }
+
+        var regex = /^([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])/
+
+
+        // /([^0]\d)/   匹配非零开头两位以上的整数
+
+        console.log(regex.test("012"))
+
+
+        // console.log(isValidIP("0.0.0.0"));
+        // console.log(isValidIP("12.255.56.1"));
+        // console.log(isValidIP("137.255.156.100"));
+        // console.log(isValidIP("01.02.03.04"));
+        // console.log(isValidIP("abc.def.ghi.jkl"));
+        // console.log(isValidIP("123.456.789.0"));
+        // console.log(isValidIP("1.2.3.4\n"));
+    </script>
+</body>
+</html>

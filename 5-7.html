@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Array.diff</title>
+</head>
+<body>
+    <script>
+
+        // https://www.codewars.com/kata/array-dot-diff/train/javascript
+
+        // Description:
+
+        // Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+
+        // It should remove all values from list a, which are present in list b.
+
+        // array_diff([1,2],[1]) == [2]
+        // If a value is present in b, all of its occurrences must be removed from the other:
+
+        // array_diff([1,2,2,2,3],[2]) == [1,3]
+
+        // myself
+        function array_diff(a, b) {
+            var arr = []
+
+            for (let i = 0; i < a.length; i++) {
+                var isDiff = true
+
+                for (let j = 0; j < b.length; j++) {
+                    while (a[i] == b[j]) {
+                        isDiff = false
+                        break
+                    }
+                }
+                // console.log("num:" + a[i], isDiff)
+                if (isDiff) arr.push(a[i])
+            }
+            return arr
+        }
+
+        // first
+        // function array_diff(a, b) {
+        //     return a.filter(function (x) { return b.indexOf(x) == -1 })
+        // }
+
+        // second
+        // function array_diff(a, b) {
+        //     return a.filter(e => !b.includes(e))
+        // }
+
+        // third
+        // function array_diff(a, b) {
+        //     var arr = new Array()
+
+        //     for (let i = 0; i < a.length; i++) {
+        //         if (b.indexOf(a[i] < 0)) {
+        //             arr.push(a[i])
+        //         }
+        //     }
+        //     return arr
+        // }
+
+        // console.log(array_diff([], [4,5]))
+        // console.log(array_diff([3,4], [3]))
+        // console.log(array_diff([1,8,2], []))
+        console.log(array_diff([1,-15,-13,3,-17,9,19,14,-11,0,-9,15,10,-19], [3,-17,-19,-9,-15,19,15]))
+    </script>
+</body>
+</html>
